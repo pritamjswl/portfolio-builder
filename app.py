@@ -1,6 +1,6 @@
 from cs50 import SQL
 from datetime import timedelta
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_session import Session
 
 
@@ -30,9 +30,14 @@ def index():
     return render_template("layout.html")
 
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    return render_template("register.html")
+    """Register the user"""
+    if request.method == "POST":
+        return "Success"
+        
+    else:
+        return render_template("register.html")
 
 # Run application
 if __name__ == "__main__":
