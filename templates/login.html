@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block js %}
+    <script src="/static/js/login.js"></script>
+{% endblock %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+
+    <div class="p-2 mt-3 mb-3 text-center">
+        <h1>Welcome Back</h1>
+    </div>
+
+    <section class="p-2 d-block m-auto w-100" style="max-width:600px;">
+        <form action="/login" method="post">
+            <!--Email-->
+            <div class="mb-3">
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="email" placeholder="Email" autocomplete="off">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+
+            <!--Password-->
+            <div class="mb-3">
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary w-100" style="max-width: 300px;">Login</button>
+            </div>
+
+            <!--Invalid response-->
+            <p class="text-danger text-center d-none" id="invalidLogin">
+                <small>Invalid email or password</small>
+            </p>
+
+            <div class="mb-3 text-center">
+                <small class="text-body-secondary">Don't have an account? <a href="/register" title="Register">register</a></small>
+            </div>
+
+            <!-- Forgot Password -->
+            <div class="mb-3 text-center">
+                <small class="text-body-secondary"><a href="/recover" title="Recover Account">Forgot password?</a></small>
+            </div>
+
+        </form>
+    </section>
+
+{% endblock %}

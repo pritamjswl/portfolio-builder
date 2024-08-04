@@ -1,6 +1,6 @@
 from cs50 import SQL
 from datetime import timedelta
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request
 from flask_session import Session
 
 
@@ -30,14 +30,35 @@ def index():
     return render_template("layout.html")
 
 
+''' User Authentication Routes '''
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register the user"""
     if request.method == "POST":
         return "Success"
-        
+
     else:
         return render_template("register.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    """Login the user"""
+    if request.method == "POST":
+        return redirect("/")
+    
+    else:
+        return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    """Forgot user and log out"""
+    session.clear()
+
+    return redirect("/")
+
 
 # Run application
 if __name__ == "__main__":
