@@ -11,6 +11,7 @@ CREATE TABLE users (
     profile_photo TEXT,
     cover_photo TEXT,
     profession TEXT,
+    status TEXT, -- E.g, Available to work
     bio TEXT,
     institution TEXT,
     address TEXT,

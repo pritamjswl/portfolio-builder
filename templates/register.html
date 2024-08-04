@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+
+{% block js %}
+    <script src="/static/js/register.js"></script>
+{% endblock %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body %}
+
+    <div class="p-2 mt-3 mb-3 text-center">
+        <h1>Register</h1>
+    </div>
+
+    <section class="tab-content p-2 d-block m-auto w-100" style="max-width:600px;">
+
+        <!--STEP 1: Name and username-->
+        <section class="tab-pane fade show active" id="tab1" tabindex="0">
+            <!--Validate First Name-->
+            <div class="input-group has-validation mb-3">
+                <div class="form-floating" id="fname-label"> <!--Toggle is-valid and is-invalid -->
+                    <input type="text" class="form-control" id="fname" placeholder="First Name" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <label for="fname">First Name</label>
+                </div>
+                <div class="invalid-feedback"></div>
+            </div>
+
+            <!--Validate Last Name-->
+            <div class="input-group has-validation mb-3">
+                <div class="form-floating" id="lname-label"> <!--Toggle is-valid and is-invalid -->
+                    <input type="text" class="form-control" id="lname" placeholder="Last Name" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <label for="fname">Last Name</label>
+                </div>
+                <div class="invalid-feedback"></div>
+            </div>
+
+            <!--Validate username-->
+            <div class="input-group has-validation mb-3">
+                <span class="input-group-text">@</span>
+                <div class="form-floating" id="username-label"> <!--Toggle is-valid and is-invalid -->
+                    <input type="text" class="form-control" id="username" placeholder="Username" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <label for="username">Username</label>
+                </div>
+                <div class="invalid-feedback"></div>
+            </div>
+
+            <!-- Next Button -->
+            <div class="mb-3 text-center">
+                <button type="button" class="btn btn-primary w-100" style="max-width: 300px;" onclick="go_to_step(2)">Next</button>
+            </div>
+        </section>
+
+        <!--STEP 2: Email and password-->
+        <section class="tab-pane fade" id="tab2" tabindex="0">
+            <!--Validate email-->
+            <div class="input-group has-validation mb-3">
+                <div class="form-floating" id="email-label"> <!--Toggle is-valid and is-invalid -->
+                    <input type="email" class="form-control" id="email" placeholder="Email" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <label for="email">Email</label>
+                </div>
+                <div class="invalid-feedback"></div>
+            </div>
+
+            <!--Validate password-->
+            <div class="input-group has-validation mb-3">
+                <div class="form-floating" id="password-label"> <!--Toggle is-valid and is-invalid -->
+                    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <label for="password">Password</label>
+                </div>
+                <div class="invalid-feedback"></div>
+            </div>
+
+            <!--Validate confirm password-->
+            <div class="input-group has-validation mb-3">
+                <div class="form-floating" id="confirm-label"> <!--Toggle is-valid and is-invalid -->
+                    <input type="password" class="form-control" id="confirm" placeholder="Confirm Password" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <label for="confirm">Confirm Password</label>
+                </div>
+                <div class="invalid-feedback"></div>
+            </div>
+
+            <!--Next and Prev Button-->
+            <div class="mb-3 d-flex flex-row justify-content-between align-items-center gap-2">
+                <button type="button" class="btn btn-outline-primary" style="width:45%;" onclick="go_to_step(1)">Prev</button>
+                <button type="button" class="btn btn-primary" style="width:45%;" onclick="go_to_step(3)">Next</button>
+            </div>
+        </section>
+
+        <!--STEP 3: Verify and register-->
+        <section class="tab-pane fade" id="tab3" tabindex="0">
+            <div class="mb-5">
+                <h5 class="text-center">We have sent an OTP to your email.</h5>
+            </div>
+            <!--Verify OTP-->
+            <div class="input-group has-validation mb-3">
+                <div class="form-floating" id="otp-label"> <!--Toggle is-valid and is-invalid -->
+                    <input type="number" class="form-control" id="otp" placeholder="Verify OTP" autocomplete="off" maxlength="6"> <!--Toggle is-valid and is-invalid -->
+                    <label for="otp">Verify OTP</label>
+                </div>
+                <div class="invalid-feedback"></div>
+            </div>
+        </section>
+
+    </section>
+
+{% endblock %}

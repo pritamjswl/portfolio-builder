@@ -1,6 +1,7 @@
 from cs50 import SQL
 from datetime import timedelta
 from flask import Flask, render_template
+from flask_session import Session
 
 
 # Configure the application
@@ -13,7 +14,7 @@ app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=7) # Set session lifet
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db.execute("sqlite:///users.db")
+db = SQL("sqlite:///users.db")
 
 @app.after_request
 def after_request(response):
@@ -26,8 +27,12 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("layout.html")
 
+
+@app.route("/register")
+def register():
+    return render_template("register.html")
 
 # Run application
 if __name__ == "__main__":
