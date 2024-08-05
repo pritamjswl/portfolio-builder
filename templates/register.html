@@ -21,7 +21,7 @@
             <!--Validate First Name-->
             <div class="input-group has-validation mb-3">
                 <div class="form-floating" id="fnameLabel"> <!--Toggle is-valid and is-invalid -->
-                    <input type="text" class="form-control" id="fname" placeholder="First Name" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <input type="text" class="form-control" name="fname" id="fname" placeholder="First Name" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
                     <label for="fname">First Name</label>
                 </div>
                 <div class="invalid-feedback" id="fnameFeedback"></div>
@@ -30,7 +30,7 @@
             <!--Validate Last Name-->
             <div class="input-group has-validation mb-3">
                 <div class="form-floating" id="lnameLabel"> <!--Toggle is-valid and is-invalid -->
-                    <input type="text" class="form-control" id="lname" placeholder="Last Name" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
                     <label for="fname">Last Name</label>
                 </div>
                 <div class="invalid-feedback" id="lnameFeedback"></div>
@@ -40,7 +40,7 @@
             <div class="input-group has-validation mb-3">
                 <span class="input-group-text">@</span>
                 <div class="form-floating" id="usernameLabel"> <!--Toggle is-valid and is-invalid -->
-                    <input type="text" class="form-control" id="username" placeholder="Username" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
                     <label for="username">Username</label>
                 </div>
                 <div class="invalid-feedback" id="usernameFeedback"></div>
@@ -52,7 +52,7 @@
             </div>
 
             <div class="mb-3 text-center">
-                <small class="text-body-secondary">Already have an account? <a href="/login" title="Login">login</a></small>
+                <small class="text-body-secondary">Already have an account? <a href="{{ url_for('login') }}" title="Login">login</a></small>
             </div>
 
             <div class="mb-3 text-center">
@@ -65,7 +65,7 @@
             <!--Validate email-->
             <div class="input-group has-validation mb-3">
                 <div class="form-floating" id="emailLabel"> <!--Toggle is-valid and is-invalid -->
-                    <input type="email" class="form-control" id="email" placeholder="Email" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
                     <label for="email">Email</label>
                 </div>
                 <div class="invalid-feedback" id="emailFeedback"></div>
@@ -74,7 +74,7 @@
             <!--Validate password-->
             <div class="input-group has-validation mb-3">
                 <div class="form-floating" id="passwordLabel"> <!--Toggle is-valid and is-invalid -->
-                    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
                     <label for="password">Password</label>
                 </div>
                 <div class="invalid-feedback" id="passwordFeedback"></div>
@@ -83,7 +83,7 @@
             <!--Validate confirm password-->
             <div class="input-group has-validation mb-3">
                 <div class="form-floating" id="confirmPasswordLabel"> <!--Toggle is-valid and is-invalid -->
-                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
+                    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" autocomplete="off"> <!--Toggle is-valid and is-invalid -->
                     <label for="confirmPassword">Confirm Password</label>
                 </div>
                 <div class="invalid-feedback" id="confirmPasswordFeedback"></div>
@@ -109,7 +109,7 @@
             <!--Verify OTP-->
             <div class="input-group has-validation mb-3 m-auto" style="max-width:200px;">
                 <div class="form-floating" id="otpLabel"> <!--Toggle is-valid and is-invalid -->
-                    <input type="number" class="form-control" id="otp" placeholder="Verify OTP" autocomplete="off" maxlength="6" pattern="\d{6}"> <!--Toggle is-valid and is-invalid -->
+                    <input type="number" class="form-control" name="otp" id="otp" placeholder="Verify OTP" autocomplete="off" maxlength="6" pattern="\d{6}"> <!--Toggle is-valid and is-invalid -->
                     <label for="otp">Verify OTP</label>
                 </div>
                 <div class="invalid-feedback" id="optFeedback"></div>

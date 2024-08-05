@@ -1,7 +1,10 @@
 from cs50 import SQL
 from datetime import timedelta
-from flask import Flask, redirect, render_template, request
+from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from apps.helpers import apology, login_required
 
 
 # Configure the application
@@ -33,6 +36,8 @@ def index():
 ''' User Account Routes '''
 
 @app.route("/account")
+@app.route("/account/dashboard")
+@login_required
 def account():
     return render_template("account.html")
 
@@ -43,7 +48,37 @@ def account():
 def register():
     """Register the user"""
     if request.method == "POST":
-        return "Success"
+        # Get Form Data
+        fname = request.form.get('fname')
+        lname = request.form.get('lname')
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        confirmPassword = request.form.get('confirmPassword')
+        otp = request.form.get('otp')
+
+        # TO DO: Validate form data
+
+        # TO DO: Sanitize form data, e.g, remove spaces
+
+        # Hash the password
+        password = generate_password_hash(password)
+
+        # Register the user to the database
+        db.execute('INSERT INTO users(fname, lname, username, email, password) VALUES(?, ?, ?, ?, ?)', fname, lname, username, email, password)
+
+        # Forgot any users previously logged in
+        session.clear()
+
+        # Get the id of this user
+        users = db.execute("SELECT id FROM users WHERE email = ?", email)
+
+        # Login in the user to the session
+        session["user_id"] = users[0]['id']
+
+        # Greet user for the first time
+        flash("Welcome " + fname + "!", "success")
+        return redirect("/account")
 
     else:
         return render_template("register.html")
@@ -53,7 +88,22 @@ def register():
 def login():
     """Login the user"""
     if request.method == "POST":
-        return redirect("/")
+        # Get the Form data
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        # TO DO: Validate Form Data
+
+        # Login in user
+        users = db.execute('SELECT id FROM users WHERE email = ?', email)
+
+        # Forget any previews user_id
+        session.clear()
+
+        # Remember which user has logged in
+        session["user_id"] = users[0]["id"]
+        return redirect("/account")
+
     
     else:
         return render_template("login.html")
@@ -63,8 +113,8 @@ def login():
 def logout():
     """Forgot user and log out"""
     session.clear()
-
-    return redirect("/")
+    flash("You have been logged out!", "info")
+    return redirect("/account")
 
 
 # Run application
