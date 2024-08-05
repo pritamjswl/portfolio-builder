@@ -1,4 +1,42 @@
- .alert {
-    border-radius: 0;
-    z-index: 99999;
- }
+/* Customize */
+.icon-x {
+   font-size:24px;
+}
+
+/*---SIDENAV---*/
+#sideNav {
+   position: fixed;
+   top:0;
+   bottom:0;
+   left:-100%;
+   width: 75%;
+   transition: all 0.4s;
+   z-index:100001;
+}
+#overlay {
+   position:fixed;
+   top:0;
+   bottom:0;
+   left:0;
+   right:0;
+   background-color: rgba(0,0,0, 0.3);
+   display:none;
+   z-index:100000;
+}
+#sideNav .btn:hover, .btn:active {
+   background-color: var(--bs-body-bg);
+}
+#sideNav .active {
+   color: var(--bs-primary);
+   background-color: var(--bs-body-bg);
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+   /*SideNav*/
+   #sideNav {
+      top: 60px;
+      left: 0;
+      width: 25%;
+   }
+}

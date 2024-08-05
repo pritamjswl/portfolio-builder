@@ -9,34 +9,71 @@
     <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
     
-            <button class="btn d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-list"></i>
+            <button class="btn d-lg-none border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list icon-x"></i>
             </button>
 
-            <a class="navbar-brand" href="/account">Navbar</a>
+            <a class="navbar-brand" href="/">Logo</a>
 
-            <button class="btn d-lg-none" type="button">
-                <i class="bi bi-person-circle"></i>
+            <button class="btn d-lg-none border-0 p-0" type="button" onclick="open_sidenav()">
+                <i class="bi bi-person-circle icon-x"></i>
             </button>
-
-
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="/about" title="About">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="/help" title="Help">Help</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="/feedback" title="Feedback">Feedback</a>
                     </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        <a class="btn btn-sm btn-primary" href="/logout" title="Logout">Logout</a>
                     </li>
                 </ul>
             </div>
-          </div>
-      </nav>
+        </div>
+    </nav>
+
+    <!--SIDENAV-->
+    <section class="bg-body-tertiary p-2" id="sideNav">
+        <div class="mb-1">
+            <a class="btn active border-0 d-flex flex-row align-items-center gap-2" href="{{ url_for('account') }}" title="Home">
+                <i class="bi bi-house-door icon-x"></i>
+                <span>Home</span>
+            </a>
+        </div>
+        <div class="mb-1">
+            <a class="btn border-0 d-flex flex-row align-items-center gap-2" href="/profile/edit" title="Edit your profile">
+                <i class="bi bi-pencil-square icon-x"></i>
+                <span>Manage</span>
+            </a>
+        </div>
+        <div class="mb-1">
+            <a class="btn border-0 d-flex flex-row align-items-center gap-2" href="/inbox" title="Your inbox">
+                <i class="bi bi-envelope icon-x"></i>
+                <span>Inbox</span>
+            </a>
+        </div>
+        <div class="mb-1">
+            <a class="btn border-0 d-flex flex-row align-items-center gap-2" href="/notifications" title="See your notifications">
+                <i class="bi bi-bell icon-x"></i>
+                <span>Notifications</span>
+            </a>
+        </div>
+        <div class="mb-1">
+            <a class="btn border-0 d-flex flex-row align-items-center gap-2" href="/settings" title="Settings">
+                <i class="bi bi-gear icon-x"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+    </section>
+    <!--Overlay to close sidenav-->
+    <div id="overlay" onclick="close_sidenav()"></div>
+
 {% endblock %}
