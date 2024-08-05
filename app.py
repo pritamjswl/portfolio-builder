@@ -30,6 +30,13 @@ def index():
     return render_template("layout.html")
 
 
+''' User Account Routes '''
+
+@app.route("/account")
+def account():
+    return render_template("account.html")
+
+
 ''' User Authentication Routes '''
 
 @app.route("/register", methods=["GET", "POST"])

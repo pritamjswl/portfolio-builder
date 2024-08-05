@@ -104,12 +104,12 @@
             <div class="mb-3 text-center">
                 <h5>OPT Verification</h5>
                 <p class="text-body-secondary">Enter the OTP sent to</p>
-                <p><strong id="sentEmail"></strong></p>
+                <small><strong id="sentEmail"></strong> <i class="bi bi-pen text-body-secondary" onclick="go_to_step(2)"></i></small>
             </div>
             <!--Verify OTP-->
             <div class="input-group has-validation mb-3 m-auto" style="max-width:200px;">
                 <div class="form-floating" id="otpLabel"> <!--Toggle is-valid and is-invalid -->
-                    <input type="number" class="form-control" id="otp" placeholder="Verify OTP" autocomplete="off" maxlength="6"> <!--Toggle is-valid and is-invalid -->
+                    <input type="number" class="form-control" id="otp" placeholder="Verify OTP" autocomplete="off" maxlength="6" pattern="\d{6}"> <!--Toggle is-valid and is-invalid -->
                     <label for="otp">Verify OTP</label>
                 </div>
                 <div class="invalid-feedback" id="optFeedback"></div>

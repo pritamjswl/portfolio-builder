@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     btnStep2.addEventListener('click', () => {
         // TO DO: Validation Logic
 
+        // Display the email where OTP was sent
+        document.querySelector('#sentEmail').innerHTML = email.value;
         // Move to third step
         go_to_step(3);
     });
