@@ -4,7 +4,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from apps.helpers import apology, login_required
+from apps.helpers import apology, login_required, send_user_data
 
 
 # Configure the application
@@ -30,16 +30,20 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    return render_template("layout.html")
+    logged_in = False # To show dashboard button based on it
+    if session.get("user_id") is not None:
+        logged_in = True
+
+    return render_template("index.html", logged_in=logged_in)
 
 
 ''' User Account Routes '''
 
-@app.route("/account")
-@app.route("/account/dashboard")
+@app.route("/dashboard")
 @login_required
-def account():
-    return render_template("account.html")
+@send_user_data
+def dashboard(user=None):
+    return render_template("dashboard.html", user=user)
 
 
 ''' User Authentication Routes '''
@@ -78,7 +82,7 @@ def register():
 
         # Greet user for the first time
         flash("Welcome " + fname + "!", "success")
-        return redirect("/account")
+        return redirect("/dashboard")
 
     else:
         return render_template("register.html")
@@ -102,7 +106,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = users[0]["id"]
-        return redirect("/account")
+        return redirect("/dashboard")
 
     
     else:
@@ -114,7 +118,7 @@ def logout():
     """Forgot user and log out"""
     session.clear()
     flash("You have been logged out!", "info")
-    return redirect("/account")
+    return redirect("/")
 
 
 # Run application

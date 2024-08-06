@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <!--HEADER: Navigation top-->
+    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="/">Logo</a>
+
+            <button class="btn d-lg-none border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list icon-x"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" title="Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" title="About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" title="Contact">Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        {% if logged_in %}
+                            <a class="btn btn-sm btn-primary" href="/dashboard" title="Dashboard">
+                                <i class="bi bi-speedometer2"></i>
+                                <span>Dashboard</span>
+                            </a>
+                            <a class="btn btn-sm btn-outline-danger" href="/logout" title="Logout">Logout</a>
+                        {% else %}
+                            <a class="btn btn-sm btn-primary" href="/login" title="Login">Login</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
