@@ -43,7 +43,14 @@ def index():
 @login_required
 @send_user_data
 def dashboard(user=None):
-    return render_template("dashboard.html", user=user)
+    return render_template("dashboard.html", user=user, active="dashboard")
+
+
+@app.route("/manage")
+@login_required
+@send_user_data
+def manage(user=None):
+    return render_template("manage.html", user=user, active="manage")
 
 
 ''' User Authentication Routes '''

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block js %}{% endblock %}
+
 {% block title %}
     Dashboard
 {% endblock %}
@@ -51,31 +53,31 @@
     <!--SIDENAV-->
     <section class="bg-body-tertiary p-2" id="sideNav">
         <div class="mb-1">
-            <a class="btn active border-0 d-flex flex-row align-items-center gap-2" href="/dashboard" title="Home">
+            <a class="btn {% if active == 'dashboard' %}active{% endif %} border-0 d-flex flex-row align-items-center gap-2" href="/dashboard" title="Home">
                 <i class="bi bi-speedometer2 icon-x"></i>
                 <span>Dashboard</span>
             </a>
         </div>
         <div class="mb-1">
-            <a class="btn border-0 d-flex flex-row align-items-center gap-2" href="/profile/edit" title="Edit your profile">
+            <a class="btn {% if active == 'manage' %}active{% endif %} border-0 d-flex flex-row align-items-center gap-2" href="/manage" title="Edit your profile">
                 <i class="bi bi-pencil-square icon-x"></i>
                 <span>Manage</span>
             </a>
         </div>
         <div class="mb-1">
-            <a class="btn border-0 d-flex flex-row align-items-center gap-2" href="/inbox" title="Your inbox">
+            <a class="btn {% if active == 'inbox' %}active{% endif %} border-0 d-flex flex-row align-items-center gap-2" href="/inbox" title="Your inbox">
                 <i class="bi bi-envelope icon-x"></i>
                 <span>Inbox</span>
             </a>
         </div>
         <div class="mb-1">
-            <a class="btn border-0 d-flex flex-row align-items-center gap-2" href="/notifications" title="See your notifications">
+            <a class="btn {% if active == 'notifications' %}active{% endif %} border-0 d-flex flex-row align-items-center gap-2" href="/notifications" title="See your notifications">
                 <i class="bi bi-bell icon-x"></i>
                 <span>Notifications</span>
             </a>
         </div>
         <div class="mb-1">
-            <a class="btn border-0 d-flex flex-row align-items-center gap-2" href="/settings" title="Settings">
+            <a class="btn {% if active == 'settings' %}active{% endif %} border-0 d-flex flex-row align-items-center gap-2" href="/settings" title="Settings">
                 <i class="bi bi-gear icon-x"></i>
                 <span>Settings</span>
             </a>
@@ -86,12 +88,7 @@
 
     <!--Main Content-->
     <main class="main">
-        <section class="main-content">
-            {% block main %}{% endblock %}
-        </section>
-        <aside class="aside-content">
-            {% block aside %}{% endblock %}
-        </aside>
+        {% block main %}{% endblock %}
     </main>
 
 {% endblock %}

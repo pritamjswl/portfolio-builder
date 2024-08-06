@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Manage profile
+{% endblock %}
+
+{% block main %}
+    <section class="d-block w-100" style="max-width:600px;">
+        <div class="mb-5">
+            <h3 class="text-primary">Manage your profile</h3>
+        </div>
+
+        <!--Editing profile photo-->
+        <div class="mb-5">
+            <div class="mb-3">
+                <h4 class="p-2 bg-body-tertiary rounded">Profile Photo</h4>
+            </div>
+
+            <div class="card p-3 d-flex flex-row justify-content-between align-items-center">
+                <form action="/update_profile_photo" method="post" enctype="multipart/form-data">
+                    <img src="{% if user.profile_photo %}{{ user.profile_photo }}{% else %}/static/image/user.png{% endif %}" alt="Profile Photo" style="width:74px; height: 74px;object-fit:cover;" class="card rounded-circle">
+                    <input type="file" class="d-none" name="image" id="profile_photo" accept="image/*" onchange="this.form.submit()" />
+                </form>
+
+                <div>
+                    {% if user.profile_photo %}
+                        <form action="/delete_profile_photo" method="post" class="d-inline">
+                            <button class="btn btn-danger" style="padding:0 7px 0 7px;" onclick="this.form.submit()" title="Delete">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                        </form>
+                    {% endif %}
+                    <label class="btn btn-primary" for="profile_photo" title="Update">{% if user.profile_photo %}Update{% else %}Add{% endif %}</label>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
